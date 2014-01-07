@@ -9,6 +9,10 @@ public class WordListsApi {
   String basePath = "http://api.wordnik.com/v4";
   ApiInvoker apiInvoker = ApiInvoker.getInstance();
 
+  public void addHeader(String key, String value) {
+    getInvoker().addDefaultHeader(key, value);
+  }
+
   public ApiInvoker getInvoker() {
     return apiInvoker;
   }
@@ -46,7 +50,7 @@ public class WordListsApi {
       }
     } catch (ApiException ex) {
       if(ex.getCode() == 404) {
-      	return null;
+        return null;
       }
       else {
         throw ex;
